@@ -22,12 +22,16 @@ The primary user is a procurement manager.
 The main walkthrough is:
 
 1. Open the dashboard and identify vendors needing attention.
-2. Submit a new vendor with a business owner, category, contact, and risk tier.
-3. Open the vendor workspace.
-4. Request missing documents from the vendor contact.
-5. Mark documents received and complete the security checklist.
-6. Record an approval decision.
-7. Return to the dashboard and see the updated status and activity.
+2. Start a new vendor submission with only a company name and website.
+3. Watch the app simulate research and automatically complete the internal
+   intake form.
+4. Review and confirm the populated vendor details.
+5. Submit the vendor and automatically trigger document requests and the
+   security review.
+6. Open the vendor workspace and inspect the generated work.
+7. Mark documents received and complete the security checklist.
+8. Record an approval decision.
+9. Return to the dashboard and see the updated status and activity.
 
 ## Scope
 
@@ -37,7 +41,8 @@ The main walkthrough is:
   next-action column.
 - Seeded vendor portfolio spanning approved, rejected, under-review,
   documents-requested, and newly submitted states.
-- New vendor submission form.
+- Automated new-vendor intake that simulates company research and fills the
+  internal procurement form from a company name and website.
 - Vendor review workspace with:
   - company and engagement overview;
   - document checklist;
@@ -95,9 +100,31 @@ Status is communicated by text and color, never color alone.
 
 ## Vendor Submission
 
-The submission form collects:
+The submission flow begins with:
 
 - company name;
+- company website;
+- internal business owner;
+- intended use.
+
+Selecting `Research and prepare submission` starts a short, visible automation
+sequence. The demo cycles through believable steps such as:
+
+- verifying company identity;
+- identifying services and headquarters;
+- finding a vendor contact;
+- assessing likely data access;
+- assigning an initial risk tier;
+- selecting required documents and security checks.
+
+No live research is performed. A deterministic demo-data resolver matches a
+small set of showcased companies and generates plausible results for any other
+entry. The UI labels the result as demo-generated data.
+
+The completed form contains:
+
+- company name;
+- website;
 - service category;
 - business owner;
 - vendor contact name and email;
@@ -105,9 +132,10 @@ The submission form collects:
 - data-access level;
 - initial risk tier.
 
-Submitting creates a vendor in `Submitted` status, adds an activity event, and
-opens the new vendor workspace. Required documents are derived from the risk
-tier and data-access level.
+The user can edit every generated field before confirmation. Confirming the
+form creates the vendor, derives its required documents, marks those documents
+as requested, starts the security review, adds corresponding activity events,
+and opens the new vendor workspace in `Documents requested` status.
 
 ## Vendor Workspace
 
@@ -206,6 +234,10 @@ The implementation is divided into:
 Business rules live in domain/store functions rather than UI components. This
 keeps the later visual reskin independent from workflow behavior.
 
+The simulated automation is isolated behind a typed `vendorResearch` service
+interface. The first implementation is deterministic and local, but the UI
+does not depend on that implementation detail.
+
 ## Visual Direction
 
 The first version should be polished but intentionally easy to reskin. Use a
@@ -229,8 +261,11 @@ component treatments without changing the data model or workflows.
 
 Automated tests cover:
 
+- deterministic vendor research and generated field shape;
+- review and editing of generated intake data;
 - vendor submission and required-document derivation;
-- document request and status progression;
+- automatic document requests and security-review creation after confirmation;
+- document state and vendor-status progression;
 - security review completion and concern handling;
 - approval eligibility;
 - rejection reason requirements;
