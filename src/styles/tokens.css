@@ -1,0 +1,15 @@
+:root {
+  --paper: #f4f0e6;
+  --surface: #fffdf7;
+  --ink: #141414;
+  --muted: #69665f;
+  --rule: #c9c3b7;
+  --soft-rule: #e3ded3;
+  --red: #d3432e;
+  --blue: #164f9f;
+  --yellow: #e8bd24;
+  --green: #276b57;
+  --rust: #a5432f;
+  --shadow: 5px 5px 0 var(--ink);
+  --font: "Avenir Next", "Futura", "Century Gothic", Arial, sans-serif;
+}
