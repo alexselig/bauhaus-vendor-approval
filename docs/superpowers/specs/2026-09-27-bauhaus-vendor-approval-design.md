@@ -245,9 +245,11 @@ neutral, editorial procurement interface with strong typography, restrained
 color, crisp rules, dense tables, and clear hierarchy. Avoid decorative
 gradients, glass effects, excessive cards, and rounded-pill-heavy UI.
 
-All colors, type, spacing, borders, and status treatments must be centralized
-as design tokens. The future Bauhaus `DESIGN.md` will replace these tokens and
-component treatments without changing the data model or workflows.
+The supplied Claude artifact is the authoritative visual reference:
+`https://claude.ai/artifact/66et3aWAsBME7ahXYGbPdY`. All colors, type,
+spacing, borders, and status treatments must be centralized as design tokens
+so the interface can be matched to that reference without changing the data
+model or workflows.
 
 ## Error and Empty States
 
