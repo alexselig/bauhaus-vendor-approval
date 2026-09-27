@@ -20,7 +20,7 @@ it("runs automated intake and opens the review workspace", async () => {
   await user.click(screen.getByRole("button", { name: "Research and prepare submission" }));
   expect(await screen.findByText("Demo-generated company data")).toBeInTheDocument();
   await user.click(screen.getByRole("button", { name: "Confirm and start review" }));
-  expect(await screen.findByRole("heading", { name: "Meridian Envelope Systems" })).toBeInTheDocument();
+  expect(await screen.findByRole("heading", { name: "Threshold Architectural Doors" })).toBeInTheDocument();
   expect(screen.getAllByText("Documents requested").length).toBeGreaterThan(0);
   expect(screen.getByText("Security review started")).toBeInTheDocument();
 });

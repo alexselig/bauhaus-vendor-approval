@@ -314,15 +314,15 @@ import {
 } from "./workflow";
 
 const draft = {
-  companyName: "Meridian Envelope Systems",
-  website: "https://meridian-envelope.example",
-  category: "Building envelope",
+  companyName: "Threshold Architectural Doors",
+  website: "https://threshold-doors.example",
+  category: "Architectural doors and hardware",
   businessOwner: "Elena Park",
-  contactName: "Noah Bennett",
-  contactEmail: "noah@meridian-envelope.example",
-  intendedUse: "Facade consulting for civic projects",
-  dataAccess: "Confidential" as const,
-  riskTier: "High" as const,
+  contactName: "Clara Voss",
+  contactEmail: "clara@threshold-doors.example",
+  intendedUse: "Custom doors, frames, and hardware packages for civic and workplace projects",
+  dataAccess: "Business" as const,
+  riskTier: "Medium" as const,
 };
 
 describe("vendor workflow", () => {
@@ -496,19 +496,19 @@ import { describe, expect, it } from "vitest";
 import { researchVendor } from "./vendorResearch";
 
 describe("researchVendor", () => {
-  it("returns the curated Meridian demo profile", async () => {
+  it("returns the curated Threshold demo profile", async () => {
     const result = await researchVendor({
-      companyName: "Meridian Envelope Systems",
-      website: "https://meridian-envelope.example",
+      companyName: "Threshold Architectural Doors",
+      website: "https://threshold-doors.example",
       businessOwner: "Elena Park",
-      intendedUse: "Facade consulting for civic projects",
+      intendedUse: "Custom doors, frames, and hardware packages for civic and workplace projects",
     });
 
     expect(result).toMatchObject({
-      category: "Building envelope",
-      contactName: "Noah Bennett",
-      dataAccess: "Confidential",
-      riskTier: "High",
+      category: "Architectural doors and hardware",
+      contactName: "Clara Voss",
+      dataAccess: "Business",
+      riskTier: "Medium",
     });
   });
 
@@ -542,13 +542,13 @@ Create a curated profile for:
 
 ```ts
 export const SHOWCASE_VENDOR = {
-  companyName: "Meridian Envelope Systems",
-  website: "https://meridian-envelope.example",
-  category: "Building envelope",
-  contactName: "Noah Bennett",
-  contactEmail: "noah@meridian-envelope.example",
-  dataAccess: "Confidential",
-  riskTier: "High",
+  companyName: "Threshold Architectural Doors",
+  website: "https://threshold-doors.example",
+  category: "Architectural doors and hardware",
+  contactName: "Clara Voss",
+  contactEmail: "clara@threshold-doors.example",
+  dataAccess: "Business",
+  riskTier: "Medium",
 } as const;
 ```
 
@@ -564,17 +564,17 @@ it("researches, allows edits, and confirms a vendor", async () => {
   const user = userEvent.setup();
   render(<TestApp initialEntries={["/vendors/new"]} />);
 
-  await user.type(screen.getByLabelText("Company name"), "Meridian Envelope Systems");
-  await user.type(screen.getByLabelText("Website"), "https://meridian-envelope.example");
+  await user.type(screen.getByLabelText("Company name"), "Threshold Architectural Doors");
+  await user.type(screen.getByLabelText("Website"), "https://threshold-doors.example");
   await user.selectOptions(screen.getByLabelText("Business owner"), "Elena Park");
-  await user.type(screen.getByLabelText("Intended use"), "Facade consulting for civic projects");
+  await user.type(screen.getByLabelText("Intended use"), "Custom doors, frames, and hardware packages for civic and workplace projects");
   await user.click(screen.getByRole("button", { name: "Research and prepare submission" }));
 
-  expect(await screen.findByDisplayValue("Building envelope")).toBeInTheDocument();
+  expect(await screen.findByDisplayValue("Architectural doors and hardware")).toBeInTheDocument();
   expect(screen.getByText("Demo-generated company data")).toBeInTheDocument();
 
   await user.clear(screen.getByLabelText("Vendor contact"));
-  await user.type(screen.getByLabelText("Vendor contact"), "Nora Bennett");
+  await user.type(screen.getByLabelText("Vendor contact"), "Cora Voss");
   await user.click(screen.getByRole("button", { name: "Confirm and start review" }));
 
   expect(await screen.findByText("Documents requested")).toBeInTheDocument();
@@ -833,15 +833,15 @@ it("completes automated intake and opens the generated review", async () => {
   const user = userEvent.setup();
   render(<TestApp initialEntries={["/vendors/new"]} />);
 
-  await user.type(screen.getByLabelText("Company name"), "Meridian Envelope Systems");
-  await user.type(screen.getByLabelText("Website"), "https://meridian-envelope.example");
+  await user.type(screen.getByLabelText("Company name"), "Threshold Architectural Doors");
+  await user.type(screen.getByLabelText("Website"), "https://threshold-doors.example");
   await user.selectOptions(screen.getByLabelText("Business owner"), "Elena Park");
-  await user.type(screen.getByLabelText("Intended use"), "Facade consulting for civic projects");
+  await user.type(screen.getByLabelText("Intended use"), "Custom doors, frames, and hardware packages for civic and workplace projects");
   await user.click(screen.getByRole("button", { name: "Research and prepare submission" }));
   await screen.findByText("Demo-generated company data");
   await user.click(screen.getByRole("button", { name: "Confirm and start review" }));
 
-  expect(await screen.findByRole("heading", { name: "Meridian Envelope Systems" })).toBeInTheDocument();
+  expect(await screen.findByRole("heading", { name: "Threshold Architectural Doors" })).toBeInTheDocument();
   expect(screen.getByText("Documents requested")).toBeInTheDocument();
   expect(screen.getByText(/Document requests prepared/)).toBeInTheDocument();
   expect(screen.getByText(/Security review started/)).toBeInTheDocument();
@@ -995,9 +995,9 @@ npm run dev
 
 1. Open Vendor approvals and scan the blocked and active vendors.
 2. Select Submit vendor.
-3. Enter `Meridian Envelope Systems` and
-   `https://meridian-envelope.example`.
-4. Choose Elena Park and describe the facade-consulting use.
+3. Enter `Threshold Architectural Doors` and
+   `https://threshold-doors.example`.
+4. Choose Elena Park and describe the architectural-door package.
 5. Run the simulated research, review the populated form, and confirm.
 6. Inspect the automatically requested documents and started security review.
 7. Complete requirements and approve the vendor.
@@ -1017,7 +1017,7 @@ Verify:
 
 1. Dashboard loads with 14 vendors and credible mixed states.
 2. Search, filters, sorting, and reset work.
-3. Meridian research visibly progresses and fills the expected fields.
+3. Threshold research visibly progresses and fills the expected fields.
 4. Generated fields remain editable.
 5. Confirmation creates the vendor, requests documents, and starts security.
 6. Approval stays blocked until all requirements are complete.

@@ -11,7 +11,7 @@ const initialInput = {
   companyName: SHOWCASE_VENDOR.companyName,
   website: SHOWCASE_VENDOR.website,
   businessOwner: "Elena Park",
-  intendedUse: "Facade consulting and envelope analysis for civic projects",
+  intendedUse: "Custom doors, frames, and hardware packages for civic and workplace projects",
 };
 
 export function NewVendorPage() {

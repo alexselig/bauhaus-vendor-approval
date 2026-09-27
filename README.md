@@ -15,8 +15,8 @@ npm run dev
 
 1. Open **Vendor approvals** and scan the active and blocked vendors.
 2. Select **Submit vendor**.
-3. Use the prefilled `Meridian Envelope Systems` and
-   `https://meridian-envelope.example`.
+3. Use the prefilled `Threshold Architectural Doors` and
+   `https://threshold-doors.example`.
 4. Run the simulated research and review the completed internal form.
 5. Confirm the vendor to request documents and start security review.
 6. Update the document and security checks, then approve or reject the vendor.

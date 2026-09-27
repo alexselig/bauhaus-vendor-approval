@@ -10,28 +10,27 @@ import {
 } from "./workflow";
 
 const draft = {
-  companyName: "Meridian Envelope Systems",
-  website: "https://meridian-envelope.example",
-  category: "Building envelope",
+  companyName: "Threshold Architectural Doors",
+  website: "https://threshold-doors.example",
+  category: "Architectural doors and hardware",
   businessOwner: "Elena Park",
-  contactName: "Noah Bennett",
-  contactEmail: "noah@meridian-envelope.example",
-  intendedUse: "Facade consulting for civic projects",
-  dataAccess: "Confidential" as const,
-  riskTier: "High" as const,
+  contactName: "Clara Voss",
+  contactEmail: "clara@threshold-doors.example",
+  intendedUse: "Custom doors, frames, and hardware packages for civic and workplace projects",
+  dataAccess: "Business" as const,
+  riskTier: "Medium" as const,
 };
 
 describe("vendor workflow", () => {
-  it("derives high-risk requirements", () => {
+  it("derives requirements for a business-data vendor", () => {
     expect(requiredDocumentsFor(draft).map((item) => item.name)).toEqual(
       expect.arrayContaining([
         "W-9",
         "Certificate of insurance",
         "Security questionnaire",
-        "Data processing agreement",
-        "SOC 2 report",
       ]),
     );
+    expect(requiredDocumentsFor(draft).map((item) => item.name)).not.toContain("SOC 2 report");
   });
 
   it("automatically requests documents and starts security review", () => {

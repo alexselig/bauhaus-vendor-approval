@@ -2,19 +2,19 @@ import { describe, expect, it } from "vitest";
 import { researchVendor } from "./vendorResearch";
 
 const input = {
-  companyName: "Meridian Envelope Systems",
-  website: "https://meridian-envelope.example",
+  companyName: "Threshold Architectural Doors",
+  website: "https://threshold-doors.example",
   businessOwner: "Elena Park",
-  intendedUse: "Facade consulting for civic projects",
+  intendedUse: "Custom doors, frames, and hardware packages for civic and workplace projects",
 };
 
 describe("researchVendor", () => {
   it("returns the curated showcase profile", async () => {
     await expect(researchVendor(input)).resolves.toMatchObject({
-      category: "Building envelope",
-      contactName: "Noah Bennett",
-      dataAccess: "Confidential",
-      riskTier: "High",
+      category: "Architectural doors and hardware",
+      contactName: "Clara Voss",
+      dataAccess: "Business",
+      riskTier: "Medium",
     });
   });
 

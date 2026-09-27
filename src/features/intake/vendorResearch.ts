@@ -8,13 +8,13 @@ export interface ResearchInput {
 }
 
 export const SHOWCASE_VENDOR = {
-  companyName: "Meridian Envelope Systems",
-  website: "https://meridian-envelope.example",
-  category: "Building envelope",
-  contactName: "Noah Bennett",
-  contactEmail: "noah@meridian-envelope.example",
-  dataAccess: "Confidential" as DataAccess,
-  riskTier: "High" as RiskTier,
+  companyName: "Threshold Architectural Doors",
+  website: "https://threshold-doors.example",
+  category: "Architectural doors and hardware",
+  contactName: "Clara Voss",
+  contactEmail: "clara@threshold-doors.example",
+  dataAccess: "Business" as DataAccess,
+  riskTier: "Medium" as RiskTier,
 };
 
 const categories = [

@@ -20,9 +20,8 @@ Update the curated research result, prefilled intake form, tests, README demo
 walkthrough, and implementation-plan examples. Preserve the existing procurement
 workflow, approval rules, dashboard data, and Bauhaus architecture-firm identity.
 
-The rename must remove every active reference to Meridian Envelope Systems,
-its old domain, contact, building-envelope category, and facade-consulting use
-case.
+The rename must remove every active reference to the previous showcase company,
+domain, contact, building-envelope category, and facade-consulting use case.
 
 ## Verification
 

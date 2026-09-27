@@ -69,7 +69,7 @@ Run:
 npm test -- src/features/intake/vendorResearch.test.ts src/domain/workflow.test.ts src/app/App.test.tsx
 ```
 
-Expected: failures reference the old Meridian showcase values.
+Expected: failures reference the previous showcase values.
 
 - [ ] **Step 3: Update the curated vendor and intake defaults**
 
@@ -105,7 +105,7 @@ Run:
 
 ```bash
 rg -n "Meridian|meridian-envelope|Noah Bennett|Building envelope|Facade consulting" \
-  --glob '!node_modules/**' .
+  src README.md
 ```
 
 Expected: no matches.
